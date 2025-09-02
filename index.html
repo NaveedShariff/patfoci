@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="royal">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Patfoci Technologies | Empowering Lives, Pioneering Cures</title>
+<meta name="description" content="Patfoci builds AI-driven medical devices and SaMD that make healthcare more accessible, accurate, and personalized." />
+<link rel="icon" href="logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+/* =============== THEME TOKENS (LIGHT FIRST) =============== */
+:root{
+  --page:#f7f9fc;
+  --surface:#ffffff;
+  --ink:#0f1728;
+  --muted:#5a6a85;
+  --line:#e6ecf5;
+  --soft-line:#eef3f9;
+  --brand:#185ADB;     /* royal medical blue */
+  --brand-2:#00C2FF;   /* cyan accent */
+  --success:#1fbf75;
+  --warn:#ffb451;
+  --radius:18px;
+  --shadow:0 12px 28px rgba(16,34,68,.08), 0 2px 8px rgba(16,34,68,.06);
+  --ring:0 0 0 4px rgba(24,90,219,.15);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --page:#0c1120;
+    --surface:#0f1528;
+    --ink:#eef3ff;
+    --muted:#b7c5e4;
+    --line:#1b2745;
+    --soft-line:#121c35;
+    --shadow:0 16px 40px rgba(0,0,0,.45);
+    --ring:0 0 0 4px rgba(0,194,255,.18);
+  }
+}
+
+/* =============== BASE =============== */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:
+    radial-gradient(1200px 420px at 80% -10%, rgba(0,194,255,.10), transparent 60%),
+    radial-gradient(1000px 380px at 10% 0%, rgba(24,90,219,.08), transparent 60%),
+    var(--page);
+  color:var(--ink); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height:1.6; overflow-x:hidden;
+}
+h1,h2,h3,.display{font-family:Manrope, Inter, sans-serif; letter-spacing:.2px}
+a{color:var(--brand); text-decoration:none}
+
+/* Layout */
+.container{width:min(1180px, 92%); margin-inline:auto}
+.grid{display:grid; gap:24px}
+.two{grid-template-columns:repeat(2, minmax(0, 1fr))}
+.three{grid-template-columns:repeat(3, minmax(0, 1fr))}
+.four{grid-template-columns:repeat(4, minmax(0, 1fr))}
+@media (max-width: 980px){.two,.three,.four{grid-template-columns:1fr}}
+
+/* =============== NAV =============== */
+header{
+  position:sticky; top:0; z-index:50;
+  background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.6));
+  -webkit-backdrop-filter: saturate(1.2) blur(10px);
+  backdrop-filter: saturate(1.2) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+@media (prefers-color-scheme: dark){
+  header{background:linear-gradient(180deg, rgba(12,17,32,.85), rgba(12,17,32,.55))}
+}
+.nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
+.brand{display:flex; align-items:center; gap:12px; color:inherit}
+.brand img{width:42px; height:42px; object-fit:contain}
+.brand h4{margin:0; font-weight:800; font-size:1.08rem}
+.brand small{display:block; margin-top:2px; color:var(--muted); font-weight:600; font-size:.78rem}
+
+nav ul{display:flex; gap:8px; list-style:none; margin:0; padding:0}
+nav a{padding:10px 12px; border-radius:12px; color:var(--muted); font-weight:700; font-size:.95rem}
+nav a:hover, nav a.active{background:var(--soft-line); color:var(--ink)}
+.menu-btn{display:none; border:1px solid var(--line); background:var(--surface); border-radius:12px; padding:10px 12px}
+@media (max-width:900px){
+  nav ul{display:none}
+  nav ul.open{display:flex; flex-direction:column; position:absolute; right:4%; top:64px; width:min(320px, 92%); padding:14px; background:var(--surface); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow)}
+  .menu-btn{display:inline-flex}
+}
+.cta{
+  background:linear-gradient(180deg, var(--brand), #0f49d8);
+  color:#fff; padding:10px 16px; border-radius:14px; font-weight:800; border:1px solid rgba(0,0,0,.05); box-shadow:var(--shadow)
+}
+
+/* =============== HERO =============== */
+.hero{padding:84px 0 50px; position:relative}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px;
+  background:var(--soft-line); border:1px solid var(--line); color:var(--muted); font-weight:800; font-size:.84rem
+}
+.hero h1{font-size:clamp(2.2rem, 5vw, 4rem); line-height:1.06; margin:16px 0 10px}
+.hero p.lede{font-size:clamp(1rem,1.6vw,1.2rem); color:var(--muted); max-width:840px}
+
+/* animated molecule net */
+.molecule{position:absolute; inset:-10% 0 auto 0; height:280px; pointer-events:none; opacity:.5}
+@media (max-width:980px){.molecule{opacity:.35}}
+.dot{fill:url(#g1)}
+.link{stroke:url(#g2); stroke-width:1; opacity:.75}
+
+/* badges */
+.badges{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+.badge{padding:8px 12px; border:1px solid var(--line); background:var(--surface); border-radius:999px; color:var(--muted); font-weight:800; font-size:.86rem}
+
+/* =============== SECTIONS =============== */
+section{padding:70px 0}
+h2{font-size:clamp(1.7rem, 3vw, 2.4rem); margin:0 0 10px}
+.sub{color:var(--muted); margin:0 0 24px; font-size:1.02rem}
+
+.card{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:22px; box-shadow:var(--shadow);
+  transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease
+}
+.card:hover{transform:translateY(-3px)}
+.soft{background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.5)); border:1px solid var(--line)}
+@media (prefers-color-scheme: dark){ .soft{background:linear-gradient(180deg, rgba(15,21,40,.7), rgba(15,21,40,.5))} }
+
+.klist{columns:2; gap:24px; padding-left:18px}
+.klist li{margin:8px 0}
+@media (max-width:840px){.klist{columns:1}}
+
+.metric{display:flex; align-items:center; gap:12px; padding:18px; border:1px dashed var(--line); border-radius:16px; background:#fff}
+.metric strong{font-size:1.6rem}
+@media (prefers-color-scheme: dark){ .metric{background:#0f1528} }
+
+/* Feature stripe */
+.stripe{
+  border:1px solid var(--line); border-radius:16px; overflow:hidden; position:relative;
+  background:linear-gradient(90deg, #f9fbff, #fff);
+}
+@media (prefers-color-scheme: dark){ .stripe{background:linear-gradient(90deg, #0d1426, #0f1528)} }
+.stripe .track{display:flex; gap:18px; padding:10px 12px; animation:mar 18s linear infinite; white-space:nowrap}
+.chip{white-space:nowrap; padding:6px 10px; border-radius:999px; border:1px solid var(--line); background:var(--surface); font-weight:800; font-size:.86rem}
+@keyframes mar{0%{transform:translateX(0)} 100%{transform:translateX(-50%)}}
+
+/* Leadership */
+.person{
+  display:grid; grid-template-columns:110px 1fr; gap:18px; align-items:center;
+  padding:18px; border-radius:18px; border:1px solid var(--line); background:var(--surface); position:relative; overflow:hidden;
+}
+.avatar{
+  width:110px; height:110px; border-radius:16px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow); position:relative
+}
+.avatar img{width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.02)}
+.avatar::after{
+  content:""; position:absolute; inset:0; background:linear-gradient(120deg, transparent 10%, rgba(255,255,255,.10) 30%, transparent 60%);
+  transform:translateX(-120%); animation:gloss 4.2s ease-in-out infinite
+}
+@keyframes gloss{0%{transform:translateX(-120%)} 55%{transform:translateX(120%)} 100%{transform:translateX(120%)}}
+
+/* Contact */
+.contact{display:grid; gap:24px; grid-template-columns:1.15fr .9fr}
+@media (max-width:980px){.contact{grid-template-columns:1fr}}
+.form input,.form select,.form textarea{
+  width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#fff; color:var(--ink); outline:none
+}
+.form input:focus,.form select:focus,.form textarea:focus{box-shadow:var(--ring); border-color:#c3d6ff}
+@media (prefers-color-scheme: dark){
+  .form input,.form select,.form textarea{background:#0c1120; color:var(--ink)}
+}
+.form textarea{min-height:140px; resize:vertical}
+.hint{color:var(--muted); font-size:.92rem}
+.map{height:270px; width:100%; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#e6ecf5}
+@media (prefers-color-scheme: dark){.map{background:#0c1120}}
+
+/* Footer */
+footer{margin-top:60px; padding:28px 0; border-top:1px solid var(--line); color:var(--muted); font-size:.95rem}
+
+/* Reveal on scroll */
+.reveal{opacity:0; transform:translateY(14px); transition:all .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.show{opacity:1; transform:none}
+
+/* Progress bar and cursor halo */
+.progress{position:fixed; inset:0 0 auto 0; height:3px; background:linear-gradient(90deg, var(--brand), var(--brand-2)); width:0; z-index:60}
+.halo{position:fixed; width:24px; height:24px; border-radius:50%; pointer-events:none; z-index:59; mix-blend:color-dodge; opacity:.5;
+  background:radial-gradient(circle, rgba(0,194,255,.45), rgba(24,90,219,.15) 70%, transparent 72%)}
+/* Buttons */
+.btn{display:inline-flex; align-items:center; gap:10px; font-weight:800; padding:12px 16px; border-radius:14px; border:1px solid rgba(24,90,219,.1); color:#fff; background:linear-gradient(180deg, var(--brand), #0f49d8); box-shadow:var(--shadow)}
+.btn.secondary{color:var(--ink); background:var(--surface); border:1px solid var(--line)}
+.pill{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--muted); font-weight:800; font-size:.86rem}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="halo" id="halo" aria-hidden="true"></div>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="Patfoci home">
+      <img src="logo.png" alt="Patfoci logo" />
+      <div>
+        <h4 class="display">Patfoci <span style="opacity:.9">Technologies</span></h4>
+        <small>Empowering Lives, Pioneering Cures</small>
+      </div>
+    </a>
+
+    <nav>
+      <button class="menu-btn" aria-label="Open menu">☰</button>
+      <ul id="menu">
+        <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#oxigenius">OxiGenius</a></li>
+        <li><a href="#why">Why Patfoci</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="cta" href="#contact">Get Started</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="molecule" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <radialGradient id="g1" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stop-color="#00c2ff"/>
+          <stop offset="100%" stop-color="#00c2ff" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#185adb"/>
+          <stop offset="100%" stop-color="#00c2ff"/>
+        </linearGradient>
+      </defs>
+      <!-- generated via JS later for motion -->
+      <g id="links"></g>
+      <g id="dots"></g>
+    </svg>
+
+    <div class="container">
+      <span class="eyebrow">Innovation • Solutions • Security</span>
+      <h1 class="display">Reimagining Healthcare With AI</h1>
+      <p class="lede">AI medical devices and Software as a Medical Device that improve access, accuracy, and personalization for every patient.</p>
+
+      <div class="badges">
+        <span class="badge">AI without cloud dependency</span>
+        <span class="badge">Clinically validated with hospital partners</span>
+        <span class="badge">Global reach</span>
+        <span class="badge">Real time monitoring</span>
+        <span class="badge">SaMD ready</span>
+        <span class="badge">OxiGenius PPG AI</span>
+      </div>
+
+      <div style="display:flex; gap:12px; margin-top:22px">
+        <a class="btn" href="#solutions">Explore solutions</a>
+        <a class="btn secondary" href="#why">Why Patfoci</a>
+      </div>
+
+      <div class="stripe" style="margin-top:22px">
+        <div class="track">
+          <span class="chip">15+ Digital Biomarkers</span>
+          <span class="chip">Edge AI on device</span>
+          <span class="chip">EHR integration</span>
+          <span class="chip">Privacy by design</span>
+          <span class="chip">Atrial Fibrillation Detection</span>
+          <span class="chip">Sleep Apnea Detection</span>
+
+          <span class="chip">15+ Digital Biomarkers</span>
+          <span class="chip">Edge AI on device</span>
+          <span class="chip">EHR integration</span>
+          <span class="chip">Privacy by design</span>
+          <span class="chip">Atrial Fibrillation Detection</span>
+          <span class="chip">Sleep Apnea Detection</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section id="solutions">
+    <div class="container">
+      <h2 class="display">Our AI Powered Solutions</h2>
+      <p class="sub">Comprehensive technology that improves outcomes, reduces costs, and enhances accessibility.</p>
+
+      <div class="grid three">
+        <div class="card reveal">
+          <h3 class="display">AI Diagnostics</h3>
+          <p class="muted">Real time, accurate diagnostics powered by advanced AI that reduces human error and improves outcomes.</p>
+          <ul>
+            <li>Real time analysis and reporting</li>
+            <li>Clinical validation</li>
+            <li>Reduced human error</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h3 class="display">Accessible Healthcare</h3>
+          <p class="muted">Affordable and scalable solutions that reach underserved regions and democratize access worldwide.</p>
+          <ul>
+            <li>Cost effective deployment</li>
+            <li>Scalable rollout</li>
+            <li>Global reach</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h3 class="display">Personalized Care</h3>
+          <p class="muted">AI driven treatment recommendations tailored to medical history and individual profiles.</p>
+          <ul>
+            <li>Individual tailoring</li>
+            <li>Medical history analysis</li>
+            <li>Treatment optimization</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <a class="pill" href="#oxigenius">View flagship product →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OXIGENIUS -->
+  <section id="oxigenius">
+    <div class="container">
+      <span class="eyebrow">Flagship Product</span>
+      <h2 class="display">OxiGenius™ PPG AI Platform</h2>
+      <p class="sub">Photoplethysmography platform that delivers 15+ digital biomarkers with edge AI for real time health monitoring.</p>
+
+      <div class="grid two">
+        <div class="card reveal soft"><h3 class="display">Inclusive Design</h3><p class="muted">Accurate across all skin tones with flexible form factors for diverse populations and use cases.</p></div>
+        <div class="card reveal soft"><h3 class="display">Seamless Integration</h3><p class="muted">Easy integration with EHRs, cloud platforms, and research systems to support modern workflows.</p></div>
+        <div class="card reveal soft"><h3 class="display">Edge AI Technology</h3><p class="muted">On device processing without cloud dependency that enables privacy and real time performance.</p></div>
+        <div class="card reveal soft">
+          <h3 class="display">Key Features</h3>
+          <ul class="klist">
+            <li>SpO₂ monitoring</li><li>Blood pressure estimation</li><li>Cardiac Risk Index (CRI)</li>
+            <li>Stress level analysis</li><li>Pulse wave analysis</li><li>Mental wellness score</li>
+            <li>Heart rate variability</li><li>Sleep apnea detection</li><li>Respiratory rate</li>
+            <li>Atrial fibrillation detection</li><li>Vascular health index</li><li>Physical activity metrics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="container">
+      <h2 class="display">Why Choose Patfoci</h2>
+      <p class="sub">An integrated approach to AI healthcare innovation from research to deployment.</p>
+
+      <div class="grid four">
+        <div class="card reveal"><h3 class="display">Custom Solutions</h3><p class="muted">Tailored AI for specific clinical needs.</p></div>
+        <div class="card reveal"><h3 class="display">Interoperability</h3><p class="muted">EHR ready with an API first architecture.</p></div>
+        <div class="card reveal"><h3 class="display">End to End Service</h3><p class="muted">Complete R&D, manufacturing, and consulting.</p></div>
+        <div class="card reveal"><h3 class="display">Clinical Validation</h3><p class="muted">Real world validation with leading hospitals.</p></div>
+      </div>
+
+      <div class="grid two" style="margin-top:18px">
+        <div class="metric reveal"><strong>15+</strong><div class="muted">Digital biomarkers</div></div>
+        <div class="metric reveal"><strong>Global</strong><div class="muted">Hospital partnerships</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section id="leadership">
+    <div class="container">
+      <h2 class="display">Leadership</h2>
+      <p class="sub">Experienced leaders driving innovation and excellence in AI healthcare technology.</p>
+
+      <div class="grid two">
+        <article class="person reveal">
+          <div class="avatar"><img src="shiv.jpeg" alt="Dr. Poigai Arunachalam Shivaram headshot" /></div>
+          <div>
+            <h3 class="display" style="margin:.2rem 0">Poigai Arunachalam Shivaram</h3>
+            <div class="muted" style="font-weight:800">Ph.D., DBA — Director</div>
+            <p class="muted">Over 20 years in healthcare technology and AI research guiding strategic vision and product development.</p>
+            <div class="badges"><span class="badge">Clinical partnerships</span><span class="badge">Product strategy</span></div>
+          </div>
+        </article>
+
+        <article class="person reveal">
+          <div class="avatar"><img src="Chokkalingam.jpeg" alt="Arunachalam Chokkalingam headshot" /></div>
+          <div>
+            <h3 class="display" style="margin:.2rem 0">Arunachalam Chokkalingam</h3>
+            <div class="muted" style="font-weight:800">PGDMS (UK) — Director</div>
+            <p class="muted">15+ years of international business management leading global expansion and operational excellence.</p>
+            <div class="badges"><span class="badge">Global ops</span><span class="badge">Partnerships</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="display">Contact Patfoci</h2>
+      <p class="sub">Let us explore how our solutions can transform your healthcare delivery and improve patient outcomes.</p>
+
+      <div class="contact">
+        <form class="card form reveal" id="contactForm" onsubmit="submitForm(event)">
+          <div class="grid two">
+            <div><label>First Name *</label><input required name="firstName" placeholder="John" /></div>
+            <div><label>Last Name *</label><input required name="lastName" placeholder="Doe" /></div>
+          </div>
+          <div class="grid two">
+            <div><label>Email Address *</label><input required type="email" name="email" placeholder="john.doe@hospital.com" /></div>
+            <div><label>Phone Number</label><input name="phone" placeholder="+1-507-316-5839" /></div>
+          </div>
+          <div><label>Organization</label><input name="org" placeholder="Hospital or Healthcare Organization" /></div>
+          <div>
+            <label>Subject *</label>
+            <select required name="subject">
+              <option value="">Select</option><option>Partnership Inquiry</option><option>Product Demo</option><option>Technical Support</option>
+            </select>
+          </div>
+          <div><label>Message *</label><textarea required name="message" placeholder="Please describe your healthcare AI needs, questions, or challenges..."></textarea></div>
+          <button class="btn" type="submit">Send Message ✈</button>
+          <p class="hint" id="formNote">Our team replies within 24 hours.</p>
+        </form>
+
+        <div class="grid reveal">
+          <div class="card">
+            <h3 class="display">Contact Information</h3>
+            <p>📞 <strong>Phone</strong><br><span class="muted">+1-507-316-5839</span><br><span class="muted">Available 9 AM to 6 PM CST</span></p>
+            <p>✉️ <strong>Email</strong><br><a class="muted" href="mailto:admin@patfoci.com">admin@patfoci.com</a><br><span class="muted">24 hour response time</span></p>
+            <p>🌐 <strong>Website</strong><br><a class="muted" href="https://www.patfoci.com" target="_blank" rel="noopener">www.patfoci.com</a></p>
+            <p>🔗 <strong>LinkedIn</strong><br><a class="muted" href="https://www.linkedin.com/company/patfoci" target="_blank" rel="noopener">linkedin.com/company/patfoci</a></p>
+          </div>
+
+          <div class="card">
+            <h3 class="display">Our Location</h3>
+            <p class="muted"><strong>Patfoci Technologies Private Limited</strong><br/>2450 Marion Rd SE, Rochester, MN 55904, United States</p>
+            <div class="map" aria-label="Interactive map">
+              <iframe title="Patfoci Location" width="100%" height="100%" style="border:0"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=2450+Marion+Rd+SE,+Rochester,+MN+55904&output=embed"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="grid two">
+      <div>© <span id="year"></span> Patfoci Technologies. All rights reserved.</div>
+      <div style="text-align:right"><a href="#top">Back to top ↑</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Progress bar */
+const progress = document.getElementById('progress');
+const onScroll = () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop)/(h.scrollHeight - h.clientHeight);
+  progress.style.width = (scrolled*100) + "%";
+};
+document.addEventListener('scroll', onScroll); onScroll();
+
+/* Mobile menu */
+const btn = document.querySelector('.menu-btn');
+const menu = document.getElementById('menu');
+btn?.addEventListener('click', () => menu.classList.toggle('open'));
+
+/* Active link */
+const links = [...document.querySelectorAll('nav a')].filter(a => a.getAttribute('href')?.startsWith('#'));
+const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+const setActive = () => {
+  let idx = 0, fromTop = window.scrollY + 120;
+  sections.forEach((s,i)=>{ if(s && s.offsetTop <= fromTop) idx = i; });
+  links.forEach(a=>a.classList.remove('active'));
+  links[idx]?.classList.add('active');
+};
+document.addEventListener('scroll', setActive); setActive();
+
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const el = document.querySelector(a.getAttribute('href'));
+    if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+    menu.classList.remove('open');
+  });
+});
+
+/* Reveal on scroll */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ entry.target.classList.add('show'); io.unobserve(entry.target); }
+  });
+}, {threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Year */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Form demo */
+function submitForm(e){
+  e.preventDefault();
+  const note = document.getElementById('formNote');
+  e.target.reset();
+  note.textContent = "Thanks for reaching out. Your message has been received.";
+  note.style.color = "var(--success)";
+}
+
+/* Cursor halo */
+const halo = document.getElementById('halo');
+window.addEventListener('pointermove', e=>{
+  halo.style.transform = `translate(${e.clientX-12}px, ${e.clientY-12}px)`;
+});
+
+/* Animated molecule network in hero */
+const svg = document.querySelector('.molecule');
+const dots = svg.querySelector('#dots');
+const linksG = svg.querySelector('#links');
+const W = 1200, H = 300, N = 42, D = [];
+for(let i=0;i<N;i++){
+  D.push({x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-.5)*0.4, vy:(Math.random()-.5)*0.4});
+  const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+  c.setAttribute('r', 3.2); c.setAttribute('class','dot');
+  dots.appendChild(c); D[i].el = c;
+}
+function step(){
+  linksG.innerHTML = '';
+  for(const p of D){
+    p.x += p.vx; p.y += p.vy;
+    if(p.x<0||p.x>W) p.vx*=-1;
+    if(p.y<0||p.y>H) p.vy*=-1;
+    p.el.setAttribute('cx', p.x); p.el.setAttribute('cy', p.y);
+  }
+  const linkDist = 110;
+  for(let i=0;i<N;i++){
+    for(let j=i+1;j<N;j++){
+      const a=D[i], b=D[j];
+      const dx=a.x-b.x, dy=a.y-b.y, d=Math.hypot(dx,dy);
+      if(d<linkDist){
+        const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+        line.setAttribute('x1',a.x); line.setAttribute('y1',a.y);
+        line.setAttribute('x2',b.x); line.setAttribute('y2',b.y);
+        line.setAttribute('class','link');
+        line.setAttribute('stroke-opacity', String(1 - d/linkDist));
+        linksG.appendChild(line);
+      }
+    }
+  }
+  requestAnimationFrame(step);
+}
+step();
+</script>
+</body>
+</html>
