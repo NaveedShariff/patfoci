@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Patfoci Technologies | Empowering Lives, Pioneering Cures</title>
+<title>Patfoci Technologies Inc. | Empowering Lives, Pioneering Cures</title>
 <meta name="description" content="Patfoci builds AI-driven medical devices and SaMD that make healthcare more accessible, accurate, and personalized." />
 <link rel="icon" href="logo.png" />
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -77,7 +77,7 @@ header{
 .brand h4{margin:0; font-weight:800; font-size:1.08rem}
 .brand small{display:block; margin-top:2px; color:var(--muted); font-weight:600; font-size:.78rem}
 
-nav ul{display:flex; gap:8px; list-style:none; margin:0; padding:0}
+nav ul{display:flex; gap:8px; list-style:none; margin:0; padding:0; align-items:center}
 nav a{padding:10px 12px; border-radius:12px; color:var(--muted); font-weight:700; font-size:.95rem}
 nav a:hover, nav a.active{background:var(--soft-line); color:var(--ink)}
 .menu-btn{display:none; border:1px solid var(--line); background:var(--surface); border-radius:12px; padding:10px 12px}
@@ -90,6 +90,15 @@ nav a:hover, nav a.active{background:var(--soft-line); color:var(--ink)}
   background:linear-gradient(180deg, var(--brand), #0f49d8);
   color:#fff; padding:10px 16px; border-radius:14px; font-weight:800; border:1px solid rgba(0,0,0,.05); box-shadow:var(--shadow)
 }
+
+/* Dropdowns */
+.dropdown{position:relative}
+.dropdown > a{display:inline-flex; align-items:center; gap:6px}
+.dropdown .caret{font-size:.8rem; opacity:.7}
+.menu{position:absolute; top:100%; left:0; min-width:220px; background:var(--surface); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); padding:8px; display:none}
+.menu a{display:block; padding:10px 12px; border-radius:10px}
+.menu a:hover{background:var(--soft-line)}
+.dropdown.open .menu{display:block}
 
 /* =============== HERO =============== */
 .hero{padding:84px 0 50px; position:relative}
@@ -199,20 +208,38 @@ footer{margin-top:60px; padding:28px 0; border-top:1px solid var(--line); color:
     <a class="brand" href="#top" aria-label="Patfoci home">
       <img src="logo.png" alt="Patfoci logo" />
       <div>
-        <h4 class="display">Patfoci <span style="opacity:.9">Technologies</span></h4>
-        <small>Empowering Lives, Pioneering Cures</small>
+        <h4 class="display">Patfoci <span style="opacity:.9">Technologies Inc.</span></h4>
+        <small>India Branch: Patfoci Technologies Private Limited</small>
       </div>
     </a>
 
     <nav>
       <button class="menu-btn" aria-label="Open menu">☰</button>
       <ul id="menu">
+        <!-- Dropdowns -->
+        <li class="dropdown" id="dd-products">
+          <a href="#products">Products <span class="caret">▾</span></a>
+          <div class="menu">
+            <a href="#products">All Products</a>
+            <a href="#products-oxigenius">OxiGenius™ Platform</a>
+          </div>
+        </li>
+        <li class="dropdown" id="dd-services">
+          <a href="#ai-services">AI Consult &amp; Services <span class="caret">▾</span></a>
+          <div class="menu">
+            <a href="#ai-services">Overview</a>
+            <a href="#ai-services">Data &amp; Analytics</a>
+            <a href="#ai-services">Automation &amp; Agents</a>
+            <a href="#ai-services">Generative AI</a>
+          </div>
+        </li>
+
         <li><a href="#solutions">Solutions</a></li>
         <li><a href="#oxigenius">OxiGenius</a></li>
         <li><a href="#why">Why Patfoci</a></li>
-        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#leadership">Team</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a class="cta" href="#contact">Get Started</a></li>
+        <!-- Get Started button removed per request -->
       </ul>
     </nav>
   </div>
@@ -232,7 +259,6 @@ footer{margin-top:60px; padding:28px 0; border-top:1px solid var(--line); color:
           <stop offset="100%" stop-color="#00c2ff"/>
         </linearGradient>
       </defs>
-      <!-- generated via JS later for motion -->
       <g id="links"></g>
       <g id="dots"></g>
     </svg>
@@ -252,8 +278,8 @@ footer{margin-top:60px; padding:28px 0; border-top:1px solid var(--line); color:
       </div>
 
       <div style="display:flex; gap:12px; margin-top:22px">
-        <a class="btn" href="#solutions">Explore solutions</a>
-        <a class="btn secondary" href="#why">Why Patfoci</a>
+        <a class="btn" href="#products">Explore products</a>
+        <a class="btn secondary" href="#ai-services">AI Consult &amp; Services</a>
       </div>
 
       <div class="stripe" style="margin-top:22px">
@@ -329,15 +355,7 @@ footer{margin-top:60px; padding:28px 0; border-top:1px solid var(--line); color:
         <div class="card reveal soft"><h3 class="display">Inclusive Design</h3><p class="muted">Accurate across all skin tones with flexible form factors for diverse populations and use cases.</p></div>
         <div class="card reveal soft"><h3 class="display">Seamless Integration</h3><p class="muted">Easy integration with EHRs, cloud platforms, and research systems to support modern workflows.</p></div>
         <div class="card reveal soft"><h3 class="display">Edge AI Technology</h3><p class="muted">On device processing without cloud dependency that enables privacy and real time performance.</p></div>
-        <div class="card reveal soft">
-          <h3 class="display">Key Features</h3>
-          <ul class="klist">
-            <li>SpO₂ monitoring</li><li>Blood pressure estimation</li><li>Cardiac Risk Index (CRI)</li>
-            <li>Stress level analysis</li><li>Pulse wave analysis</li><li>Mental wellness score</li>
-            <li>Heart rate variability</li><li>Sleep apnea detection</li><li>Respiratory rate</li>
-            <li>Atrial fibrillation detection</li><li>Vascular health index</li><li>Physical activity metrics</li>
-          </ul>
-        </div>
+        <!-- Key Features card removed per request -->
       </div>
     </div>
   </section>
@@ -362,6 +380,88 @@ footer{margin-top:60px; padding:28px 0; border-top:1px solid var(--line); color:
     </div>
   </section>
 
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="container">
+      <h2 class="display">Products</h2>
+      <p class="sub">Clinically validated AI medical devices &amp; SaMD.</p>
+
+      <div class="grid three">
+        <a class="card" href="#products-oxigenius">
+          <h3 class="display">OxiGenius™ PPG AI Platform</h3>
+          <p class="muted">15+ digital biomarkers • Edge AI • Inclusive design</p>
+          <p class="pill">View details →</p>
+        </a>
+        <div class="card">
+          <h3 class="display">Edge Gateway (Coming)</h3>
+          <p class="muted">Secure on-prem inference and EHR relay.</p>
+        </div>
+        <div class="card">
+          <h3 class="display">Remote Patient Kit (Coming)</h3>
+          <p class="muted">Home monitoring bundle for trials and RPM.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT DETAIL (OxiGenius) -->
+  <section id="products-oxigenius">
+    <div class="container">
+      <span class="eyebrow">Product Detail</span>
+      <h2 class="display">OxiGenius™ PPG AI Platform</h2>
+      <p class="sub">Photoplethysmography platform delivering 15+ digital biomarkers with on-device Edge AI.</p>
+
+      <div class="grid two">
+        <div class="card soft"><h3 class="display">Inclusive Design</h3><p class="muted">Accurate across all skin tones with flexible form factors.</p></div>
+        <div class="card soft"><h3 class="display">Seamless Integration</h3><p class="muted">EHR, cloud, and research systems ready.</p></div>
+        <div class="card soft"><h3 class="display">Edge AI Technology</h3><p class="muted">Real-time insights without cloud dependency.</p></div>
+        <!-- Key Features card removed here as well -->
+      </div>
+
+      <div style="margin-top:18px"><a class="pill" href="#products">← Back to Products</a></div>
+    </div>
+  </section>
+
+  <!-- AI CONSULT & SERVICES -->
+  <section id="ai-services">
+    <div class="container">
+      <h2 class="display">AI Consult &amp; Services</h2>
+      <p class="sub">From R&amp;D to deployment—consulting, integration, and clinical validation.</p>
+
+      <div class="grid three">
+        <div class="card">
+          <h3 class="display">Data &amp; Analytics</h3>
+          <ul>
+            <li>Turn raw data into actionable insights</li>
+            <li>Predict trends with AI-driven models</li>
+            <li>Automate data cleaning &amp; validation</li>
+            <li>Discover hidden patterns &amp; correlations</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 class="display">Automation &amp; Agents</h3>
+          <ul>
+            <li>Streamline repetitive workflows</li>
+            <li>Deploy AI-powered chatbots &amp; assistants</li>
+            <li>Enable real-time, autonomous decisioning</li>
+            <li>Integrate smart agents into existing systems</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 class="display">Generative AI</h3>
+          <ul>
+            <li>Create synthetic data for safe training</li>
+            <li>Generate clear reports &amp; visualizations</li>
+            <li>Simulate future scenarios &amp; risks</li>
+            <li>Deliver prompt-driven insights on demand</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- LEADERSHIP -->
   <section id="leadership">
     <div class="container">
@@ -370,10 +470,10 @@ footer{margin-top:60px; padding:28px 0; border-top:1px solid var(--line); color:
 
       <div class="grid two">
         <article class="person reveal">
-          <div class="avatar"><img src="shiv.jpeg" alt="Dr. Poigai Arunachalam Shivaram headshot" /></div>
+          <div class="avatar"><img src="shiv.jpeg" alt="Poigai Arunachalam Shivaram headshot" /></div>
           <div>
             <h3 class="display" style="margin:.2rem 0">Poigai Arunachalam Shivaram</h3>
-            <div class="muted" style="font-weight:800">Ph.D., DBA — Director</div>
+            <div class="muted" style="font-weight:800">Founder &amp; CEO</div>
             <p class="muted">Over 20 years in healthcare technology and AI research guiding strategic vision and product development.</p>
             <div class="badges"><span class="badge">Clinical partnerships</span><span class="badge">Product strategy</span></div>
           </div>
@@ -383,7 +483,7 @@ footer{margin-top:60px; padding:28px 0; border-top:1px solid var(--line); color:
           <div class="avatar"><img src="Chokkalingam.jpeg" alt="Arunachalam Chokkalingam headshot" /></div>
           <div>
             <h3 class="display" style="margin:.2rem 0">Arunachalam Chokkalingam</h3>
-            <div class="muted" style="font-weight:800">PGDMS (UK) — Director</div>
+            <div class="muted" style="font-weight:800">Executive Director</div>
             <p class="muted">15+ years of international business management leading global expansion and operational excellence.</p>
             <div class="badges"><span class="badge">Global ops</span><span class="badge">Partnerships</span></div>
           </div>
@@ -423,19 +523,23 @@ footer{margin-top:60px; padding:28px 0; border-top:1px solid var(--line); color:
         <div class="grid reveal">
           <div class="card">
             <h3 class="display">Contact Information</h3>
-            <p>📞 <strong>Phone</strong><br><span class="muted">+1-507-316-5839</span><br><span class="muted">Available 9 AM to 6 PM CST</span></p>
+            <p>📞 <strong>Phone</strong><br><span class="muted">+91 72004-15839</span><br><span class="muted">Available 9 AM – 6 PM IST</span></p>
             <p>✉️ <strong>Email</strong><br><a class="muted" href="mailto:admin@patfoci.com">admin@patfoci.com</a><br><span class="muted">24 hour response time</span></p>
             <p>🌐 <strong>Website</strong><br><a class="muted" href="https://www.patfoci.com" target="_blank" rel="noopener">www.patfoci.com</a></p>
             <p>🔗 <strong>LinkedIn</strong><br><a class="muted" href="https://www.linkedin.com/company/patfoci" target="_blank" rel="noopener">linkedin.com/company/patfoci</a></p>
           </div>
 
           <div class="card">
-            <h3 class="display">Our Location</h3>
-            <p class="muted"><strong>Patfoci Technologies Private Limited</strong><br/>2450 Marion Rd SE, Rochester, MN 55904, United States</p>
+            <h3 class="display">Our Locations</h3>
+            <p class="muted"><strong>USA (Patfoci Technologies Inc.)</strong><br/>2360 Jade PL NE, Rochester, Minnesota, 55906, USA.</p>
+            <p class="muted"><strong>India (Patfoci Technologies Private Limited)</strong><br/>4/85 Idaikal To Sernthamaram Main Road, Poigai, Tenkasi, Tirunelveli District, 627856, Tamil Nadu, India.</p>
             <div class="map" aria-label="Interactive map">
-              <iframe title="Patfoci Location" width="100%" height="100%" style="border:0"
+              <iframe title="USA Location" width="100%" height="120" style="border:0; display:block; margin-bottom:10px"
                 loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=2450+Marion+Rd+SE,+Rochester,+MN+55904&output=embed"></iframe>
+                src="https://www.google.com/maps?q=2360+Jade+PL+NE,+Rochester,+MN+55906&output=embed"></iframe>
+              <iframe title="India Location" width="100%" height="120" style="border:0"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=4/85+Idaikal+To+Sernthamaram+Main+Road,+Poigai,+Tenkasi,+Tirunelveli+627856,+Tamil+Nadu,+India&output=embed"></iframe>
             </div>
           </div>
         </div>
@@ -448,7 +552,7 @@ footer{margin-top:60px; padding:28px 0; border-top:1px solid var(--line); color:
 <footer>
   <div class="container">
     <div class="grid two">
-      <div>© <span id="year"></span> Patfoci Technologies. All rights reserved.</div>
+      <div>© <span id="year"></span> Patfoci Technologies Inc. All rights reserved.</div>
       <div style="text-align:right"><a href="#top">Back to top ↑</a></div>
     </div>
   </div>
@@ -469,7 +573,29 @@ const btn = document.querySelector('.menu-btn');
 const menu = document.getElementById('menu');
 btn?.addEventListener('click', () => menu.classList.toggle('open'));
 
-/* Active link */
+/* Dropdowns (hover on desktop, tap on mobile) */
+function bindDropdown(id){
+  const dd = document.getElementById(id);
+  if(!dd) return;
+  const trigger =
+    (dd.firstElementChild && dd.firstElementChild.tagName === 'A')
+      ? dd.firstElementChild
+      : (dd.querySelector(':scope > a') || dd.querySelector('a'));
+
+  dd.addEventListener('mouseenter', ()=>{ if(window.innerWidth > 900) dd.classList.add('open'); });
+  dd.addEventListener('mouseleave', ()=>{ if(window.innerWidth > 900) dd.classList.remove('open'); });
+
+  trigger.addEventListener('click', (e)=>{
+    if(window.innerWidth <= 900){
+      e.preventDefault();
+      dd.classList.toggle('open');
+    }
+  });
+}
+bindDropdown('dd-products');
+bindDropdown('dd-services');
+
+/* Active link highlight (top-level anchors) */
 const links = [...document.querySelectorAll('nav a')].filter(a => a.getAttribute('href')?.startsWith('#'));
 const sections = links.map(a => document.querySelector(a.getAttribute('href')));
 const setActive = () => {
@@ -485,7 +611,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', e=>{
     const el = document.querySelector(a.getAttribute('href'));
     if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
-    menu.classList.remove('open');
+    menu?.classList.remove('open');
   });
 });
 
